@@ -1,4 +1,4 @@
-# Coronavirus-analysis
+# Coronavirus 2019 Analysis
 
 Datasets are from Kaggle: [Novel Corona Virus 2019 Dataset](https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset)
 
