@@ -3,7 +3,7 @@
 <img src="covid-19.png" width="100%" />
 <p align="center"><sub>Image from https://www.heywood.org/education/covid-19-coronavirus-updates</sub></p>
 
-Datasets are from Kaggle: [Novel Corona Virus 2019 Dataset](https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset)
+The datasets come from from Kaggle: [Novel Corona Virus 2019 Dataset](https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset)
 
 ## Context
 
