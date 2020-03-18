@@ -1,6 +1,6 @@
 # Coronavirus 2019 Analysis
 
-<p align="center"><img src="covid-19.png" /></p>
+<img src="covid-19.png" width="100%" />
 
 Datasets are from Kaggle: [Novel Corona Virus 2019 Dataset](https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset)
 
