@@ -26,14 +26,14 @@ def total_cases_lineplot(df, title):
     plt.xticks(rotation=60)
 
 def mortality_rate(df, title):
-    sns.lineplot(df.index, df['Deaths']*100/df['Confirmed'])
+    sns.lineplot(df.index, df['Deaths']*100/df['Confirmed'], color='red')
     plt.title(title)
     plt.xlabel('Date')
     plt.ylabel('Rate')
     plt.xticks(rotation=60)
 
 def recovery_rate(df, title):
-    sns.lineplot(df.index, df['Recovered']*100/df['Confirmed'])
+    sns.lineplot(df.index, df['Recovered']*100/df['Confirmed'], color='green')
     plt.title(title)
     plt.xlabel('Date')
     plt.ylabel('Rate')
@@ -53,17 +53,17 @@ def total_latest_barplot(df):
     x = total_data.index
     y = total_data[total_column]
     ax = sns.barplot(x,  y,  palette=['#1f77b4', 'red', 'green', 'orange'])
-    
-    plt.ylabel(total_data.columns[0])
 
     for p in ax.patches:
-        ax.annotate(p.get_height(), 
+        ax.annotate(int(p.get_height()), 
                     (p.get_x() + p.get_width() / 2., p.get_height()), 
                     ha = 'center', 
                     va = 'center', 
                     xytext = (0, 10), 
                     textcoords = 'offset points', 
                     fontsize=18)
+    
+    plt.ylabel(total_data.columns[0])
 
 def daily_cases(df, title):
     sns.lineplot(df.index, df['Confirmed'].diff())
@@ -76,3 +76,25 @@ def daily_cases(df, title):
     plt.xlabel('Date')
     plt.ylabel('Cases')
     plt.xticks(rotation=60)
+
+def total_cases_by_country(df, column, palcolor):
+    y = df.index
+    x = df[column]
+    
+    xvalues = x.tolist()
+    maxvalue = max(xvalues)
+    dflen = len(xvalues)
+    
+    rank = [int((maxvalue - val) * dflen/(maxvalue + 1)) for val in xvalues]
+    palette = sns.color_palette(palcolor, dflen)
+    
+    ax = sns.barplot(x=x, y=y, orient='h', palette=np.array(palette)[rank])
+    
+    for p in ax.patches:
+        ax.annotate(int(p.get_width()), 
+                    (p.get_width(), p.get_y() + p.get_height() / 2.), 
+                    ha = 'left', 
+                    va = 'center', 
+                    fontsize=18)
+    
+    plt.title('Total {} by Country'.format(column))
