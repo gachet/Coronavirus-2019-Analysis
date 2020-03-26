@@ -41,11 +41,9 @@ Main file in this dataset is `covid_19_data.csv` and the detailed descriptions a
 
 Added two new files with individual level information:
 
-`COVID_open_line_list_data.csv`
-This file is obtained from [this link](https://docs.google.com/spreadsheets/d/1itaohdPiAeniCXNlntNztZ_oRvjh0HsGuJXUJWET008)
+`COVID_open_line_list_data.csv`. This file is obtained from [this link](https://docs.google.com/spreadsheets/d/1itaohdPiAeniCXNlntNztZ_oRvjh0HsGuJXUJWET008)
 
-`COVID19_line_list_data.csv`
-This files is obtained from [this link](https://docs.google.com/spreadsheets/d/e/2PACX-1vQU0SIALScXx8VXDX7yKNKWWPKE1YjFlWc6VTEVSN45CklWWf-uWmprQIyLtoPDA18tX9cFDr-aQ9S6/pubhtml)
+`COVID19_line_list_data.csv`. This files is obtained from [this link](https://docs.google.com/spreadsheets/d/e/2PACX-1vQU0SIALScXx8VXDX7yKNKWWPKE1YjFlWc6VTEVSN45CklWWf-uWmprQIyLtoPDA18tX9cFDr-aQ9S6/pubhtml)
 
 ### Country level datasets
 
@@ -74,3 +72,7 @@ http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml
 - European Centre for Disease Prevention and Control (ECDC): https://www.ecdc.europa.eu/en/geographical-distribution-2019-ncov-cases
 - Ministry of Health Singapore (MOH): https://www.moh.gov.sg/covid-19
 - Italy Ministry of Health: http://www.salute.gov.it/nuovocoronavirus
+
+## Keeping track of infections
+- https://www.worldometers.info/coronavirus/
+- https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6
