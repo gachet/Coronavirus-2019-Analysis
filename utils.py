@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
 import datetime
 
 def total_cases_pie(df, title):
@@ -98,3 +99,11 @@ def total_cases_by_country(df, column, palcolor):
                     fontsize=18)
     
     plt.title('Total {} by Country'.format(column))
+
+def total_cases_map(df, column, color_continuous, height=800, projection='equirectangular'):
+    fig = px.scatter_geo(df, lat='Lat', lon='Long', height=height,
+                         color=column, size=f'{column}_size', 
+                         projection=projection, animation_frame='Date', 
+                         title='{} Cases Over Time'.format(column), 
+                         color_continuous_scale=color_continuous)
+    fig.show()
