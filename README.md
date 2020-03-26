@@ -75,4 +75,5 @@ http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml
 
 ## Keeping track of infections
 - https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6
+- https://www.healthmap.org/covid-19/
 - https://www.worldometers.info/coronavirus/
