@@ -100,6 +100,17 @@ def total_cases_by_country(df, column, palcolor):
     
     plt.title('Total {} by Country'.format(column))
 
+def countries_comparison(df_countries, column, title):
+    for df in df_countries:
+        df = df.groupby(['Observed']).sum()
+        sns.lineplot(df.index, df[column])
+    
+    plt.legend([df['Country/Region'].iloc[0] for df in df_countries])
+    plt.title(title)
+    plt.xlabel('Date')
+    plt.ylabel('Cases')
+    plt.xticks(rotation=60)
+    
 def total_cases_map(df, column, color_continuous, height=800, projection='equirectangular'):
     fig = px.scatter_geo(df, lat='Lat', lon='Long', height=height,
                          color=column, size=f'{column}_size', 
