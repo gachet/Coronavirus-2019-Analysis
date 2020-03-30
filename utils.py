@@ -67,16 +67,16 @@ def total_latest_barplot(df):
     plt.ylabel(total_data.columns[0])
 
 def daily_cases(df, title):
-    sns.lineplot(df.index, df['Confirmed'].diff())
-    sns.lineplot(df.index, df['Deaths'].diff(), color='red')
-    sns.lineplot(df.index, df['Recovered'].diff(), color='green')
-    sns.lineplot(df.index, df['Active'].diff(), color='orange')
+    date_column = pd.to_datetime(df.index).strftime('%b %d')
     
-    plt.legend(['Confirmed', 'Deaths', 'Recovered', 'Active'])
-    plt.title(title)
-    plt.xlabel('Date')
-    plt.ylabel('Cases')
-    plt.xticks(rotation=60)
+    fig, axs = plt.subplots(3, 1, sharex=True, squeeze=False, figsize=(20,12))
+    
+    sns.barplot(date_column, df['Confirmed'].diff(), color='#1f77b4', ax=axs[0][0])
+    sns.barplot(date_column, df['Deaths'].diff(), color='red', ax=axs[1][0])
+    sns.barplot(date_column, df['Recovered'].diff(), color='green', ax=axs[2][0])
+    
+    fig.suptitle(title)
+    plt.xticks(rotation=90)
 
 def total_cases_by_country(df, column, palcolor):
     y = df.index
