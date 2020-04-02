@@ -15,11 +15,14 @@ def total_cases_pie(df, title):
             shadow=True)
     plt.title(title)
 
-def total_cases_lineplot(df, title):
-    sns.lineplot(df.index, df['Confirmed'])
-    sns.lineplot(df.index, df['Deaths'], color='red')
-    sns.lineplot(df.index, df['Recovered'], color='green')
-    sns.lineplot(df.index, df['Active'], color='orange')
+def logif(series, log=False):
+    return np.log(series) if log else series
+    
+def total_cases_lineplot(df, title, log=False):
+    sns.lineplot(df.index, logif(df['Confirmed'], log))
+    sns.lineplot(df.index, logif(df['Deaths'], log), color='red')
+    sns.lineplot(df.index, logif(df['Recovered'], log), color='green')
+    sns.lineplot(df.index, logif(df['Active'], log), color='orange')
     plt.legend(['Confirmed', 'Deaths', 'Recovered', 'Active'])
     plt.title(title)
     plt.xlabel('Date')
