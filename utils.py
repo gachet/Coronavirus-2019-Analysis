@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
+import calmap
 import datetime
 
 def total_cases_pie(df, title):
@@ -72,14 +73,31 @@ def total_latest_barplot(df):
 def daily_cases(df, title):
     date_column = pd.to_datetime(df.index).strftime('%b %d')
     
-    fig, axs = plt.subplots(3, 1, sharex=True, squeeze=False, figsize=(20,12))
+    fig, axs = plt.subplots(3, 1, sharex=True, squeeze=False, figsize=(20, 12))
     
-    sns.barplot(date_column, df['Confirmed'].diff(), color='#1f77b4', ax=axs[0][0])
-    sns.barplot(date_column, df['Deaths'].diff(), color='red', ax=axs[1][0])
-    sns.barplot(date_column, df['Recovered'].diff(), color='green', ax=axs[2][0])
+    confirmed_diff = df['Confirmed'].diff()
+    deaths_diff = df['Deaths'].diff()
+    recovered_diff = df['Recovered'].diff()
+    
+    sns.barplot(date_column, confirmed_diff, color='#1f77b4', ax=axs[0][0])
+    sns.barplot(date_column, deaths_diff, color='red', ax=axs[1][0])
+    sns.barplot(date_column, recovered_diff, color='green', ax=axs[2][0])
     
     fig.suptitle(title)
     plt.xticks(rotation=90)
+
+def daily_cases_calmap(df, title):    
+    fig, axs = plt.subplots(3, 1, sharex=True, squeeze=False, figsize=(20, 12))
+
+    confirmed_diff = df['Confirmed'].diff()
+    deaths_diff = df['Deaths'].diff()
+    recovered_diff = df['Recovered'].diff()
+
+    calmap.yearplot(confirmed_diff, fillcolor='white', cmap='Blues', linewidth=0.5, ax=axs[0][0])
+    calmap.yearplot(deaths_diff, fillcolor='white', cmap='Reds', linewidth=0.5, ax=axs[1][0])
+    calmap.yearplot(recovered_diff, fillcolor='white', cmap='BuGn', linewidth=0.5, ax=axs[2][0])
+
+    fig.suptitle(f'{title} [Calendar Heatmap]')
 
 def total_cases_by_country(df, column, palcolor):
     y = df.index
@@ -120,4 +138,15 @@ def total_cases_map(df, column, color_continuous, height=800, projection='equire
                          projection=projection, animation_frame='Date', 
                          title='{} Cases Over Time'.format(column), 
                          color_continuous_scale=color_continuous)
+    fig.show()
+
+def total_cases_treemap(df, column, color_continuous, height=800):
+    fig = px.treemap(df.reset_index(), 
+                     path=['Country/Region'], 
+                     values=column, 
+                     color=column, height=height,
+                     title='Number of {} Cases'.format(column),
+                     color_continuous_scale=color_continuous)
+    fig.data[0].textinfo = 'label+value'
+    fig.data[0].hovertemplate = ''
     fig.show()
