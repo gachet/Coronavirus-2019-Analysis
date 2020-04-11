@@ -150,3 +150,16 @@ def total_cases_treemap(df, column, color_continuous, height=800):
     fig.data[0].textinfo = 'label+value'
     fig.data[0].hovertemplate = ''
     fig.show()
+
+def deaths_vs_confirmed_scatter(df, height=800):
+    fig = px.scatter(df.reset_index(), 
+                     x='Confirmed', 
+                     y='Deaths', 
+                     color='Country/Region', 
+                     height=height,
+                     size='Confirmed', 
+                     text='Country/Region', 
+                     title='Deaths vs Confirmed')
+    fig.update_traces(textposition='top center')
+    fig.update_layout(showlegend=False)
+    fig.show()
