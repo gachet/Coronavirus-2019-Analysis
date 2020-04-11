@@ -97,7 +97,7 @@ def daily_cases_calmap(df, title):
     calmap.yearplot(deaths_diff, fillcolor='white', cmap='Reds', linewidth=0.5, ax=axs[1][0])
     calmap.yearplot(recovered_diff, fillcolor='white', cmap='BuGn', linewidth=0.5, ax=axs[2][0])
 
-    fig.suptitle(f'{title} [Calendar Heatmap]')
+    fig.suptitle(f'[Calendar Heatmap] {title}')
 
 def total_cases_by_country(df, column, palcolor):
     y = df.index
